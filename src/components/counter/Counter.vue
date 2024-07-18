@@ -1,7 +1,7 @@
 <template>
     <section class="container mt-4">
         <div class="container-fluid text-center">
-            <h2>Basic Counter component</h2>
+            <h2>Basic Counter</h2>
             <button :class="`btn btn-outline-${getOppositeTheme}`" @click.prevent="increment">Click(s): {{ count
                 }}</button>
         </div>

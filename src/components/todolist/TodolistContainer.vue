@@ -19,7 +19,7 @@
 
         <div class="row p-3">
             <div class="container">
-                <div v-if="$todos.getAllTodos().length === 0">
+                <div v-if="state.todos.length === 0">
                     No todos {{ formInput.value }}
                 </div>
                 <TodolistItem :todos="state.todos"></TodolistItem>
@@ -38,7 +38,7 @@ const getOppositeTheme = inject("getOppositeTheme")
 const $bus = inject("$bus");
 const $todos = inject("$todos");
 const formInput = ref("");
-const state = reactive({todos: [...$todos.getAllTodos()]})
+const state = reactive({todos: !$todos.getAllTodos() ? [] : [...$todos.getAllTodos()]})
 
 function handleSubmit() {
     try {
@@ -48,19 +48,20 @@ function handleSubmit() {
         let id = Math.floor(1000 + Math.random() * 9000);
         id = 2822
 
-        while ($todos.getAllTodos().some((data) => data.id === id)) {
+        while (state.todos.some((data) => data.id === id)) {
             id = Math.floor(1000 + Math.random() * 9000);
         }
 
         const newTodo = {
             content: formInput.value,
             id: id,
+            complete: false,
         }
         $todos.createTodo(newTodo)
         $bus.$emit("refreshTodo")
         formInput.value = ""
     } catch (error) {
-        console.log(error)
+        alert(error)
     }
 }
 

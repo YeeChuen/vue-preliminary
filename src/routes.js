@@ -3,6 +3,12 @@ import { createRouter, createWebHashHistory } from "vue-router";
 import Counter from "./components/counter/Counter.vue";
 import Home from "./components/Home.vue";
 import Todolist from "./components/todolist/Todolist.vue";
+import Pages from "./components/pages/Pages.vue";
+import PageCreate from "./components/pages/PageCreate.vue";
+import PagesView from "./components/pages/PagesView.vue";
+import PagesContent from "./components/pages/PageContent.vue";
+import PageEdit from "./components/pages/PageEdit.vue";
+import NotFound from "./components/shared/NotFound.vue";
 
 export const routes = [
   /* 
@@ -28,6 +34,19 @@ export const routes = [
   { path: "/", component: Home, name: "Home" },
   { path: "/counter", component: Counter, name: "Counter" },
   { path: "/todolist", component: Todolist, name: "Todolist" },
+  {
+    path: "/blogs",
+    component: Pages,
+    children: [
+      { path: "", component: PagesView },
+      { path: "create", component: PageCreate },
+      { path: ":index", component: PagesContent, props: true },
+      { path: ":index/edit", component: PageEdit, props: true }
+    ],
+    name: "Blogs",
+    dropdown: true
+  },
+  { path: "/:pathMatch(.*)*", component: NotFound}
 ];
 
 const router = createRouter({

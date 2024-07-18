@@ -7,8 +7,9 @@ const init = function () {
   if (todosStore === null || todosStore === "") {
     localStorage.setItem(todosKey, JSON.stringify([]));
   }
+  todosJson = localStorage.getItem(todosKey);
+  todosStore = JSON.parse(todosJson);
 };
-init();
 
 function save() {
   localStorage.setItem(todosKey, JSON.stringify(todosStore));
@@ -16,16 +17,18 @@ function save() {
 
 export default {
   getAllTodos() {
+    init();
     return todosStore;
   },
   createTodo(newTodo) {
+    console.log(todosStore)
     todosStore = [newTodo, ...todosStore];
     save();
   },
-  updateTodo(newContent, todoId) {
+  updateTodo(updateTodo, todoId) {
     todosStore = todosStore.map((todo) => {
       if (todo.id === todoId) {
-        return { ...todo, content: newContent };
+        return { ...updateTodo, id: todoId };
       } else {
         return todo;
       }

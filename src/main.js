@@ -15,12 +15,14 @@ import router from "./routes";
 
 /* data import */
 import $todos from "./utils/data/todos";
+import $pages from "./utils/data/pages";
 
 const app = createApp(App);
 
 // add your plugins here
 app.use(router); // <-- add router
 app.provide("$bus", $bus); // <-- add bus Event handler
-app.provide("$todos", $todos); // <-- add todos (example in todolist component)
+app.provide("$todos", $todos); // <-- add todos (example in todolist folder)
+app.provide("$pages", $pages); // <-- add pages (example in pages folder)
 
 app.mount("#app");

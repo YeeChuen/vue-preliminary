@@ -1,10 +1,14 @@
 <template>
     <ul v-if="props.todos.length !== 0">
-        <li class="m-2" v-for="(todo, index) in props.todos" :key="todo + index" :id="todo.id">
+        <li class="m-2" v-for="todo in props.todos" :key="todo.id" :id="todo.id">
             <!-- not in edit mode -->
             <div v-if="editId !== todo.id" class="d-flex flex-row justify-content-between">
-                <div>{{ todo.content }}</div>
-                <div class="d-flex gap-2 gap-2">
+                <div :class="`${todo.complete && 'text-decoration-line-through'}`">{{ todo.content }}</div>
+                <div class="d-flex gap-2 gap-2 ">
+                    <button :class="`btn btn-outline-success btn-sm m-auto`"
+                        @click.prevent="handleComplete(todo.content, todo.complete, todo.id)">
+                        {{`${todo.complete ? 'Undo' : 'Complete'}`}}
+                    </button>
                     <button :class="`btn btn-outline-primary btn-sm m-auto`"
                         @click.prevent="handleEdit(todo.id, todo.content)">
                         Edit
@@ -58,10 +62,15 @@ function handleSave() {
     if (editValue.value === "") {
         throw Error("No input value.")
     }
-    $todos.updateTodo(editValue.value, editId.value);
+    $todos.updateTodo({content: editValue.value, complete: false}, editId.value);
     $bus.$emit("refreshTodo")
     editId.value = null;
     editValue.value = "";
+}
+
+function handleComplete(content, complete, id) {
+    $todos.updateTodo({content: content, complete: !complete}, id);
+    $bus.$emit("refreshTodo")
 }
 
 </script>

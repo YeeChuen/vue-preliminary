@@ -1,7 +1,7 @@
 <template>
   <section :data-bs-theme="theme" :class="`bg-${theme} text-${getTextColor} vh-100 overflow-y-scroll`">
     <Navbar></Navbar>
-    <router-view></router-view>
+    <RouterView :key="$route.fullPath"></RouterView> <!-- add keybinding for force rerender when params url changes -->
     <!-- here is the displaying the router -->
   </section>
 </template>
