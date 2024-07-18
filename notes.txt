@@ -1,0 +1,31 @@
+Packages:
+    Vue CLI boilerplate
+        - install Vue CLI globally
+        `npm install @vue/cli -g`
+        - create boiler plate project
+        `vue create .`
+
+    normalize css
+        `npm install normalize.css --save`
+        - import it 
+        `import "normalize.css";`
+
+    bootstrap CSS
+        `npm install bootstrap --save`
+        - import it
+        `import "bootstrap/dist/css/bootstrap.css";`
+        `import "bootstrap/dist/js/bootstrap";`
+
+    bootstrap icons
+        `npm install bootstrap-icons --save`
+        - import it
+        `import "bootstrap-icons/font/bootstrap-icons.css";`
+
+    vue router
+        - router for vue
+        `npm install vue-router --save`
+
+Code structure
+    - events.js (set up global events)
+    - routes.js (set up route pages)
+
