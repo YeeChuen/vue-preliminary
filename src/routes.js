@@ -9,6 +9,9 @@ import PagesView from "./components/pages/PagesView.vue";
 import PagesContent from "./components/pages/PageContent.vue";
 import PageEdit from "./components/pages/PageEdit.vue";
 import NotFound from "./components/shared/NotFound.vue";
+import Meals from "./components/meals/Meals.vue";
+import MealsContent from "./components/meals/MealsContent.vue";
+import MealContent from "./components/meals/MealContent.vue";
 
 export const routes = [
   /* 
@@ -45,6 +48,12 @@ export const routes = [
     ],
     name: "Blogs",
     dropdown: true
+  },
+  { path: "/meals", component: Meals, name: "Meals",
+    children: [
+      { path: "", component: MealsContent },
+      { path: ":id", component: MealContent, props: true },
+    ],
   },
   { path: "/:pathMatch(.*)*", component: NotFound}
 ];

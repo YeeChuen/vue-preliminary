@@ -12,11 +12,11 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item dropdown" v-for="(route, index) in routes" :key="index">
                         <!-- active-class sets a specific class when the link is active. -->
-                        <router-link v-if="!route.dropdown" active-class="active" class="nav-link" aria-current="page"
+                        <router-link v-if="!route.dropdown && route.name" active-class="active" class="nav-link" aria-current="page"
                             :to="route.path">{{
                                 route.name }}</router-link>
 
-                        <div v-if="route.dropdown">
+                        <div v-if="route.dropdown && route.name">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                                 aria-expanded="false">
                                 {{ route.name }}

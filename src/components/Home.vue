@@ -23,9 +23,12 @@
             of Vue.js but also in applying advanced techniques such as custom directives, mixins, and Vue's lifecycle
             hooks to create a comprehensive and interactive web experience.</p>
 
-        <p>Note: Vue-preliminary is not optimize for mobile view.</p>
+        <p>Note: Vue-preliminary is not optimize for mobile view, it is meant for desktop only.</p>
+        <a :class="`link-${getOppositeTheme}`" href="https://github.com/YeeChuen/vue-preliminary" target="_blank" >Github Repo</a>
     </section>
 </template>
 
-<script>
+<script setup>
+import {inject} from "vue"
+const getOppositeTheme = inject("getOppositeTheme")
 </script>
