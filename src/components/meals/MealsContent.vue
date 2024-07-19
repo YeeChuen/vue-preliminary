@@ -16,6 +16,7 @@ const state = reactive({ meals: [] });
 // const getOppositeTheme = inject("getOppositeTheme");
 const $bus = inject("$bus");
 const category = ref("");
+
 $bus.$on("setMealsCategory", (newCategory) => {
     category.value = newCategory
 })

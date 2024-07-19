@@ -3,7 +3,7 @@
         <div class="row px-3 pt-3">
             <form class="d-flex flex-row justify-content-between gap-2">
                 <div class="flex-grow-1">
-                    <input type="text" class="form-control " id="form input new todo" placeholder="Create new todo"
+                    <input type="text" class="form-control " id="form input new todo" placeholder="Search"
                         v-model="formInput">
                 </div>
                 <div class="m-auto d-flex gap-2">

@@ -3,7 +3,7 @@
         :class="`col-8 p-3 pb-0 border border-${getOppositeTheme}-subtle d-flex flex-column justify-content-between`">
         <div>
             <div class="d-flex justify-content-between flex-row mb-3">
-                <h4>{{ props.category }}</h4>
+                <h4>{{ `${props.category.includes("searchInput-") ? "Search Results" : props.category}` }}</h4>
                 <div style="opacity: 50%;">{{ state.meals.length }} recipes</div>
             </div>
             <table v-if="state.meals.length > 0" class="table" style="table-layout: fixed;">
@@ -43,13 +43,22 @@
 import { defineProps, inject, reactive, watch, ref, computed } from "vue";
 const props = defineProps(["category"])
 const getOppositeTheme = inject("getOppositeTheme")
+const category = ref("")
 
 const items = 10
 const activePage = ref(0)
 
 const state = reactive({ meals: [] });
+
 async function fetchData() {
     try {
+        if (props.category.includes("searchInput-")) {
+            category.value = props.category.replaceAll("searchInput-", "")
+
+            const data = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${category.value}`)
+            return data.json()
+        }
+        category.value = props.category
         const data = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${props.category}`)
         return data.json()
     } catch (error) {

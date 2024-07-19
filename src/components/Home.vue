@@ -24,8 +24,10 @@
             hooks to create a comprehensive and interactive web experience.</p>
 
         <p>Note: Vue-preliminary is not optimize for mobile view, it is meant for desktop only.</p>
-        <a :class="`link-${getOppositeTheme}`" href="https://github.com/YeeChuen/vue-preliminary" target="_blank" >Github Repo</a>
-    </section>
+        <p>Credits: <a :class="`link-${getOppositeTheme}`" href="https://www.youtube.com/watch?v=1GNsWa_EZdw" target="_blank" >Youtube</a>
+        </p>
+        <p>Github: <a :class="`link-${getOppositeTheme}`" href="https://github.com/YeeChuen/vue-preliminary" target="_blank" >Github Repo</a>
+        </p></section>
 </template>
 
 <script setup>
