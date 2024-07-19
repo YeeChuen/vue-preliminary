@@ -1,6 +1,6 @@
 # vue-preliminary
 
-Vue-preliminary is an exercise project aimed at learning Vue.js. With a solid foundation in HTML, CSS, JavaScript, and React, I am now transitioning to Vue.js to broaden my web development skills. This project serves as a practical application of my existing knowledge, allowing me to explore the nuances and capabilities of Vue.js.
+[Vue-preliminary](https://vue-preliminary.vercel.app/#/) is an exercise project aimed at learning Vue.js. With a solid foundation in HTML, CSS, JavaScript, and React, I am now transitioning to Vue.js to broaden my web development skills. This project serves as a practical application of my existing knowledge, allowing me to explore the nuances and capabilities of Vue.js.
 
 The project includes multiple custom components and pages such as basic counter, todolist, pages and much more. Each designed to leverage specific aspects of web development and to learn Vue.js. This includes and not limited to:
 
