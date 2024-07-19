@@ -19,13 +19,15 @@
                         <td>{{ index + 1 }}.</td>
                         <td class="text-truncate">
                             <RouterLink :class="`text-decoration-none`" style="text-overflow: ellipsis;"
-                            :to="`/meals/${meal.idMeal}`"
-                            >{{ meal.strMeal }}
+                                :to="`/meals/${meal.idMeal}`">{{ meal.strMeal }}
                             </RouterLink>
                         </td>
                     </tr>
                 </tbody>
             </table>
+            <div v-else >
+                No Results Found
+            </div>
 
         </div>
         <ul class="pagination pagination-sm justify-content-end">
@@ -69,7 +71,11 @@ watch(() => props.category, () => {
     activePage.value = 0
     fetchData()
         .then((res) => {
-            state.meals = [...res.meals]
+            if (res.meals === null) {
+                state.meals = []
+            } else {
+                state.meals = [...res.meals]
+            }
         })
         .catch((err) => console.log("WARNING", err))
 })
